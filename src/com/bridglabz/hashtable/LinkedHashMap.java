@@ -23,6 +23,15 @@ public class LinkedHashMap<K, V> {
 		MyMapNode<K, V> mapNode = (MyMapNode<K, V>) linkedList.search(key);
 		return mapNode == null ? null : mapNode.getValue();
 	}
+	
+	public void remove(K key) {
+		int indexNumber = this.getBucketNumber(key);
+		MyLinkedList<K> linkedList = arrayList.get(indexNumber);
+		if (linkedList == null) {
+			return;
+		}
+		MyMapNode<K, V> mapNode = (MyMapNode<K, V>) linkedList.deleteNode(key);
+	}
 
 	private int getBucketNumber(K key) {
 		int hashCode = Math.abs(key.hashCode());
@@ -46,7 +55,7 @@ public class LinkedHashMap<K, V> {
 			mapNode.setValue(value);
 		}
 	}
-
+	
 	@Override
 	public String toString() {
 		return "LinkedHashMap [arrayList=" + arrayList + "]";

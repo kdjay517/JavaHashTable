@@ -16,6 +16,25 @@ public class MyLinkedList<K> {
 		return null;
 	}
 
+	public INode<K> deleteNode(K key) {
+		INode<K> current = head;
+		INode<K> next = head.getNext();
+		if (head.getKey().equals(key)) {
+			return head.getNext();
+		} else {
+			while (next != null) { 
+				if (next.getKey().equals(key)) {
+					current.setNext(next.getNext());
+					break;
+				}
+				current = next; 
+				next = next.getNext();
+			}
+			return head;
+		}
+
+	}
+
 	public void append(INode<K> myNode) {
 
 		if (this.head == null) {
