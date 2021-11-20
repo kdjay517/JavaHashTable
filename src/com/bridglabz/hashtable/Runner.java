@@ -4,17 +4,20 @@ import java.util.Scanner;
 
 public class Runner {
 	public static void main(String[] args) {
-		System.out.println("\nEnter 1 to find frequency of words in a sentance");
+		Operations operate = new Operations();
+		System.out.println("\nEnter 1 to find frequency of words in a sentance\nEnter 2 to find frequency"
+				+ "of words in a paragraph");
 		Scanner sc = new Scanner(System.in);
-		switch(sc.nextInt()) {
+		switch (sc.nextInt()) {
 		case 1:
-			Operations operate = new Operations();
 			operate.frequencyOfWords();
+			break;
+		case 2:
+			operate.frequencyOfWordsInParagraph();
 			break;
 		default:
 			sc.close();
 			break;
-			
 		}
 		sc.close();
 	}
